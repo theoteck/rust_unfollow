@@ -243,6 +243,10 @@ fn fetch_unfollowers() -> Fallible<()> {
         }
 
         if butitsthesamee_fod > 3 {
+            println!("");
+            println!("Found the same following count the past 4 times...");
+            println!("Either Instagram is bad at counting or you have a network error (probably the 1st)");
+            println!("Continuing...");
             break;
         }
     }
@@ -337,6 +341,10 @@ fn fetch_unfollowers() -> Fallible<()> {
         }
 
         if butitsthesamee_fol > 3 {
+            println!("");
+            println!("Found the same following count the past 4 times...");
+            println!("Either Instagram is bad at counting or you have a network error (probably the 1st)");
+            println!("Continuing...");
             break;
         }
     }
