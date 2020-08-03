@@ -27,5 +27,5 @@ It is quite simple to get it working.
   
 ## But how do I get it?
 There are two ways to do it
-  1. Download the binary file (.exe, etc) from the release page of the repository (Boringg wayy)
-  2. Download the Rust toolchain and build it yourself with cargo (Awesomee way)
+  1. Download the binary file (.exe, etc) from the [release page](https://github.com/theoteck/rust_unfollow/releases/latest) of the repository (Boringg wayy)
+  2. Download the [Rust toolchain](https://www.rust-lang.org/tools/install) and [build it](https://doc.rust-lang.org/cargo/) yourself with cargo (Awesomee way)
