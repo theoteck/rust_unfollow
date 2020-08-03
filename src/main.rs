@@ -205,7 +205,7 @@ fn fetch_unfollowers() -> Fallible<()> {
 
     let followed_holder = tab.find_element("div.PZuss").unwrap();
 
-    let followed_list = followed_holder.find_elements("li").unwrap();
+    let mut followed_list = followed_holder.find_elements("li").unwrap();
 
 
     let mut butitsthesamee_fod = 0;
@@ -215,17 +215,11 @@ fn fetch_unfollowers() -> Fallible<()> {
     println!("Getting following...");
     
     while followed_count > followed_list.len() as i32 {
-        let followed_list = followed_holder.find_elements("li");
-
-        //Not the best practice, I think, but it gets the job done!
-        let followed_list = match followed_list {
-            Ok(followed_list) => followed_list,
-            Err(_error) => match followed_holder.find_elements("li") {
-                Ok(followed_list_2) => followed_list_2,
-                Err(error) => panic!("Err {} happened twice", error)
-            }
         
-        };
+        //It ignores the Err from the Result but it's not important either way
+        if let Ok(returned_list) = followed_holder.find_elements("li") {
+            followed_list = returned_list
+        }
 
         let length = followed_list.len();
 
@@ -253,6 +247,7 @@ fn fetch_unfollowers() -> Fallible<()> {
 
     println!("");
 
+    //Extracts the names of the following from the elements we found above
     for followed in &followed_list {
         
         followed_name_list.push(
@@ -303,7 +298,7 @@ fn fetch_unfollowers() -> Fallible<()> {
 
     let follower_holder = tab.find_element("div.PZuss")?;
 
-    let follower_list = follower_holder.find_elements("li")?;
+    let mut follower_list = follower_holder.find_elements("li").unwrap();
 
 
     let mut butitsthesamee_fol = 0;
@@ -313,17 +308,11 @@ fn fetch_unfollowers() -> Fallible<()> {
     println!("Getting followers...");
 
     while follower_count > follower_list.len() as i32 {
-        let follower_list = follower_holder.find_elements("li");
-
-        //Again. Not the best practice I think but it gets the job done!
-        let follower_list = match follower_list {
-            Ok(follower_list) => follower_list,
-            Err(_error) => match follower_holder.find_elements("li") {
-                Ok(follower_list_2) => follower_list_2,
-                Err(error) => panic!("Err {} happened twice", error)
-            }
         
-        };
+        //Again. It ignores the Err from the Result but it's not important either way
+        if let Ok(returned_list) = follower_holder.find_elements("li") {
+            follower_list = returned_list
+        }
         
         let length = follower_list.len();
 
@@ -342,7 +331,7 @@ fn fetch_unfollowers() -> Fallible<()> {
 
         if butitsthesamee_fol > 3 {
             println!("");
-            println!("Found the same following count the past 4 times...");
+            println!("Found the same follower count the past 4 times...");
             println!("Either Instagram is bad at counting or you have a network error (probably the 1st)");
             println!("Continuing...");
             break;
@@ -351,6 +340,7 @@ fn fetch_unfollowers() -> Fallible<()> {
 
     println!("");
 
+    //Extracts the follower names from the elements we got above
     for follower in &follower_list {
         
         follower_name_list.push(
@@ -366,12 +356,13 @@ fn fetch_unfollowers() -> Fallible<()> {
     //--------------------------------------
 
 
-    //Get them sweet unfollowers (bad terminology I know) -----------
+    //Getting them sweet unfollowers (bad terminology I know) -----------
 
     println!("Calculating people you should probably unfollow...");
 
     let mut unfollowers : Vec<&String> = vec![];
 
+    //We find which of the following do not also belong to the followed and add them to the list
     for i in 0..&followed_name_list.len() - 1 {
         let mut itmatches = false;
 
