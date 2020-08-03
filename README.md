@@ -29,3 +29,15 @@ It is quite simple to get it working.
 There are two ways to do it
   1. Download the binary file (.exe, etc) from the [release page](https://github.com/theoteck/rust_unfollow/releases/latest) of the repository (Boringg wayy)
   2. Download the [Rust toolchain](https://www.rust-lang.org/tools/install) and [build it](https://doc.rust-lang.org/cargo/) yourself with cargo (Awesomee way)
+
+## Troubleshooting
+If the program closed on it's own then an error occured. For this reason it is recommended to run the program from the terminal so that you will be able to see the error
+
+The most common errors and solutions:
+| Error         | Solution      |
+|:-------------:|:-------------:|
+| Could not auto detect a chrome executable | Ensure that you have Google Chrome installed and it is located in the default path (C:\Program Files (x86)\Google\Chrome\Application) |
+| NoElement Found | Rerun the program |
+| Any other error | Rerun the program :) |
+
+If these don't solve your problem then feel free to add a new issue in the page (Please ensure that noone else has posted the same issue)
