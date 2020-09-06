@@ -9,4 +9,3 @@ edition = "2018"
 [dependencies]
 headless_chrome = { git = "https://github.com/atroche/rust-headless-chrome.git" }
 failure = "0.1"
-regex = "1.3.9"
