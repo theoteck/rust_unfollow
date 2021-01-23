@@ -1,4 +1,4 @@
-# rust_unfollow
+# rust_unfollow (Broken in latest Instagram website update)
 A small program that finds the people who don't follow you back on Instagram.
 It does __not__ use the Instagram API and __does__ require you to have Google Chrome installed.
 
